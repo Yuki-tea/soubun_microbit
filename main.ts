@@ -9,7 +9,7 @@ radio.onReceivedString(function (receivedString) {
         }
     }
     if (receivedString == "speed_down") {
-        if ((0 as any) > (230 as any) || right_rate > 230) {
+        if (left_rate > 230 || right_rate > 230) {
             right_rate += -50
             left_rate += -50
         }
@@ -17,16 +17,20 @@ radio.onReceivedString(function (receivedString) {
 })
 function go () {
     if (angle < -60) {
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, left_rate - 50)
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, right_rate - 50)
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, left_rate)
     } else {
         if (angle < -30) {
-            maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, left_rate - 25)
+            maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, right_rate - 25)
+            maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, left_rate)
         } else {
             if (angle > 60) {
-                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, right_rate - 50)
+                maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, left_rate - 50)
+                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, right_rate)
             } else {
                 if (angle > 30) {
-                    maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, right_rate - 25)
+                    maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, left_rate - 25)
+                    maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, right_rate)
                 } else {
                     maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, right_rate)
                 }
@@ -40,3 +44,6 @@ let right_rate = 0
 radio.setGroup(42)
 right_rate = 230
 left_rate = 230
+basic.forever(function () {
+    go()
+})
