@@ -1,3 +1,6 @@
+radio.onReceivedNumber(function (receivedNumber) {
+    angle = receivedNumber
+})
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "speed_up") {
         if (left_rate < 255 || right_rate < 255) {
@@ -15,6 +18,7 @@ radio.onReceivedString(function (receivedString) {
 function go () {
 	
 }
+let angle = 0
 let left_rate = 0
 let right_rate = 0
 radio.setGroup(42)
