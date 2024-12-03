@@ -1,5 +1,13 @@
+function calc_score () {
+	
+}
 radio.onReceivedNumber(function (receivedNumber) {
-    angle = receivedNumber
+    if (receivedNumber == 1000) {
+        basic.showIcon(IconNames.Heart)
+        start_time = control.millis()
+    } else {
+        angle = receivedNumber
+    }
 })
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "speed_up") {
@@ -41,9 +49,15 @@ function go () {
 let angle = 0
 let left_rate = 0
 let right_rate = 0
+let start_time = 0
+start_time = -10000
 radio.setGroup(42)
 right_rate = 230
 left_rate = 230
 basic.forever(function () {
-    go()
+    if (control.millis() < start_time + 10000) {
+        go()
+    } else {
+        Maqueen_V5.motorStop(Maqueen_V5.Motors.All)
+    }
 })
