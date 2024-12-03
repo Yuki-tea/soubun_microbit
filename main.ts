@@ -16,7 +16,23 @@ radio.onReceivedString(function (receivedString) {
     }
 })
 function go () {
-	
+    if (angle < -60) {
+    	
+    } else {
+        if (angle < -30) {
+        	
+        } else {
+            if (angle > 60) {
+            	
+            } else {
+                if (angle > 30) {
+                	
+                } else {
+                	
+                }
+            }
+        }
+    }
 }
 let angle = 0
 let left_rate = 0
