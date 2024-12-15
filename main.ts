@@ -55,10 +55,11 @@ radio.setGroup(42)
 right_rate = 230
 left_rate = 230
 let score = 0
-start_time = -20000
+start_time = -30000
 basic.forever(function () {
-    if (control.millis() < start_time + 20000) {
+    if (control.millis() < start_time + 30000) {
         go()
+    } else if ((control.millis() - start_time) % 300 == 0) {
         calc_score()
     } else {
         Maqueen_V5.motorStop(Maqueen_V5.Motors.All)
