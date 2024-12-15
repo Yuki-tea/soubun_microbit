@@ -63,6 +63,5 @@ basic.forever(function () {
     } else {
         Maqueen_V5.motorStop(Maqueen_V5.Motors.All)
         radio.sendNumber(score)
-        basic.showNumber(score)
     }
 })
